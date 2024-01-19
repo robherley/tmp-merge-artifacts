@@ -28,3 +28,4 @@ jobs:
         with:
           into: my-merged-artifact
           pattern: my-artifact-*
+          delete-merged: true
