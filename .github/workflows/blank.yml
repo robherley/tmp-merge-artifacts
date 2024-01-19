@@ -19,3 +19,11 @@ jobs:
         with:
           name: my-artifact-${{ matrix.foo }}
           path: file-${{ matrix.foo }}.txt
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge Artifacts
+        uses: actions/upload-artifact/merge@robherley/merge-artifact
+        with:
+          into: my-merged-artifact
+          pattern: my-artifact-*
