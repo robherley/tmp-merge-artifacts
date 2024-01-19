@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        foo: [a, b, c]
+
+    steps:
+      - name: Run a one-line script
+        run: echo "hello from job ${{ matrix.foo }}" > file-${{ matrix.foo }}.txt
+      - name: Upload
+        uses: actions/upload-artifact@robherley/merge-artifact
+        with:
+          name: my-artifact-${{ matrix.foo }}
+          path: file-${{ matrix.foo }}.txt
