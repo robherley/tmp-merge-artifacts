@@ -21,6 +21,7 @@ jobs:
           path: file-${{ matrix.foo }}.txt
   merge:
     runs-on: ubuntu-latest
+    needs: upload
     steps:
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@robherley/merge-artifact
