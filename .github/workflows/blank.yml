@@ -15,7 +15,7 @@ jobs:
       - name: Run a one-line script
         run: echo "hello from job ${{ matrix.foo }}" > file-${{ matrix.foo }}.txt
       - name: Upload
-        uses: actions/upload-artifact@robherley/merge-artifact
+        uses: actions/upload-artifact@v4
         with:
           name: my-artifact-${{ matrix.foo }}
           path: file-${{ matrix.foo }}.txt
@@ -24,8 +24,8 @@ jobs:
     needs: upload
     steps:
       - name: Merge Artifacts
-        uses: actions/upload-artifact/merge@robherley/merge-artifact
+        uses: actions/upload-artifact/merge@v4
         with:
-          into: my-merged-artifact
+          name: my-merged-artifact
           pattern: my-artifact-*
           delete-merged: true
